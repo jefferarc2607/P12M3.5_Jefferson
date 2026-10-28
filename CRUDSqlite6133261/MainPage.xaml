@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUDSqlite6133261.MainPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+
+            <Entry x:Name="txtNombre" Placeholder="Nombre" />
+            <Entry x:Name="txtEmail" Placeholder="Email" Keyboard="Email" />
+            <Entry x:Name="txtTelefono" Placeholder="Teléfono" Keyboard="Telephone" />
+
+            <Button x:Name="btnGuardar" Text="Guardar" Clicked="btnGuardar_Clicked" />
+            <Button x:Name="btnLimpiar" Text="Limpiar" Clicked="btnLimpiar_Clicked" />
+
+            <CollectionView x:Name="listaClientes" SelectionMode="Single" SelectionChanged="listaClientes_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" Padding="10" BorderColor="LightGray">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding NombreCliente}" FontAttributes="Bold" FontSize="16" />
+                                <Label Text="{Binding Correo}" FontSize="14" />
+                                <Label Text="{Binding Telefono}" FontSize="14" />
+                                <Button Text="Eliminar" BackgroundColor="Red" TextColor="White" 
+                                        CommandParameter="{Binding .}" Clicked="btnEliminar_Clicked" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
