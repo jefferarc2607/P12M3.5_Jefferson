@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SumaCRUD6133261.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+
+            <!-- Título -->
+            <Label Text="Calculadora de Suma" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" />
+
+            <!-- Entradas -->
+            <Entry x:Name="txtNumero1" Placeholder="Ingresa el primer número" Keyboard="Numeric" />
+            <Entry x:Name="txtNumero2" Placeholder="Ingresa el segundo número" Keyboard="Numeric" />
+
+            <!-- Botón Calcular -->
+            <Button x:Name="btnCalcular" Text="Click me (Calcular)" Clicked="btnCalcular_Clicked" BackgroundColor="MediumPurple" TextColor="White" />
+
+            <!-- Lista de Resultados -->
+            <Label Text="Historial de Operaciones:" FontAttributes="Bold" Margin="0,20,0,0" />
+
+            <CollectionView x:Name="listaResultados" SelectionMode="Single" SelectionChanged="listaResultados_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" Padding="10" BorderColor="LightGray">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Numero1, StringFormat='N1: {0}'}" />
+                                    <Label Text="{Binding Numero2, StringFormat='N2: {0}'}" />
+                                    <Label Text="{Binding Suma, StringFormat='Resultado: {0}'}" FontAttributes="Bold" TextColor="Green" />
+                                </VerticalStackLayout>
+                                <Button Grid.Column="1" Text="Eliminar" BackgroundColor="Red" TextColor="White" 
+                                        CommandParameter="{Binding .}" Clicked="btnEliminar_Clicked" VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
